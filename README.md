@@ -1,0 +1,1 @@
+- QuickType used for json schema inference and C++ deserialization codegen: https://app.quicktype.io/#l=schema
