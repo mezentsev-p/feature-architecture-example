@@ -1,0 +1,719 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Welcome",
+    "definitions": {
+        "Welcome": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "SportsMissions_Consts": {
+                    "$ref": "#/definitions/SportsMissionsConsts"
+                },
+                "LocalContextConfig": {
+                    "$ref": "#/definitions/LocalContextConfig"
+                },
+                "ScheduleConfig": {
+                    "$ref": "#/definitions/ScheduleConfig"
+                },
+                "SportsMissionConfig": {
+                    "$ref": "#/definitions/SportsMissionConfig"
+                },
+                "ResourcePackDownloadConfig": {
+                    "$ref": "#/definitions/ResourcePackDownloadConfig"
+                },
+                "ContextRegistratorConfig": {
+                    "$ref": "#/definitions/ContextRegistratorConfig"
+                },
+                "StateMachineConfig": {
+                    "$ref": "#/definitions/StateMachineConfig"
+                }
+            },
+            "required": [
+                "ContextRegistratorConfig",
+                "LocalContextConfig",
+                "ResourcePackDownloadConfig",
+                "ScheduleConfig",
+                "SportsMissionConfig",
+                "SportsMissions_Consts",
+                "StateMachineConfig"
+            ],
+            "title": "Welcome"
+        },
+        "ContextRegistratorConfig": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "globalId": {
+                    "type": "string"
+                },
+                "contextComponentHolder": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "contextComponentHolder",
+                "globalId"
+            ],
+            "title": "ContextRegistratorConfig"
+        },
+        "LocalContextConfig": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "contextName": {
+                    "type": "string"
+                },
+                "variables": {
+                    "$ref": "#/definitions/LocalContextConfigVariables"
+                }
+            },
+            "required": [
+                "contextName",
+                "variables"
+            ],
+            "title": "LocalContextConfig"
+        },
+        "LocalContextConfigVariables": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "IsAllPacksDownloaded": {
+                    "$ref": "#/definitions/IsAllPacksDownloaded"
+                },
+                "IsLaunchConditionsSatisfied": {
+                    "$ref": "#/definitions/IsLaunchConditionsSatisfied"
+                },
+                "IsEventActive": {
+                    "$ref": "#/definitions/IsEventActive"
+                },
+                "CurrentState": {
+                    "$ref": "#/definitions/CurrentState"
+                },
+                "IsMinPlayerLevelReached": {
+                    "$ref": "#/definitions/IsMinPlayerLevelReached"
+                },
+                "CheckLaunchRequirements": {
+                    "$ref": "#/definitions/CheckLaunchRequirements"
+                }
+            },
+            "required": [
+                "CheckLaunchRequirements",
+                "CurrentState",
+                "IsAllPacksDownloaded",
+                "IsEventActive",
+                "IsLaunchConditionsSatisfied",
+                "IsMinPlayerLevelReached"
+            ],
+            "title": "LocalContextConfigVariables"
+        },
+        "CheckLaunchRequirements": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "value": {
+                    "$ref": "#/definitions/CommonEnabledCondition"
+                },
+                "lua": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "lua",
+                "type",
+                "value"
+            ],
+            "title": "CheckLaunchRequirements"
+        },
+        "CommonEnabledCondition": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Condition"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "conditions",
+                "description",
+                "type"
+            ],
+            "title": "CommonEnabledCondition"
+        },
+        "Condition": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "type"
+            ],
+            "title": "Condition"
+        },
+        "CurrentState": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "value": {
+                    "$ref": "#/definitions/CurrentStateValue"
+                }
+            },
+            "required": [
+                "type",
+                "value"
+            ],
+            "title": "CurrentState"
+        },
+        "CurrentStateValue": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "binding": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "binding",
+                "type"
+            ],
+            "title": "CurrentStateValue"
+        },
+        "IsAllPacksDownloaded": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "value": {
+                    "$ref": "#/definitions/IsAllPacksDownloadedValue"
+                }
+            },
+            "required": [
+                "value"
+            ],
+            "title": "IsAllPacksDownloaded"
+        },
+        "IsAllPacksDownloadedValue": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "binding": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "binding"
+            ],
+            "title": "IsAllPacksDownloadedValue"
+        },
+        "IsEventActive": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "value": {
+                    "$ref": "#/definitions/IsEventActiveValue"
+                },
+                "lua": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "lua",
+                "type",
+                "value"
+            ],
+            "title": "IsEventActive"
+        },
+        "IsEventActiveValue": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "operationType": {
+                    "type": "string"
+                },
+                "left": {
+                    "$ref": "#/definitions/PlayerLevel"
+                },
+                "right": {
+                    "$ref": "#/definitions/Right"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "left",
+                "operationType",
+                "right",
+                "type"
+            ],
+            "title": "IsEventActiveValue"
+        },
+        "PlayerLevel": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "title": "PlayerLevel"
+        },
+        "Right": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "value": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "value"
+            ],
+            "title": "Right"
+        },
+        "IsLaunchConditionsSatisfied": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "value": {
+                    "$ref": "#/definitions/CommonEnabledCondition"
+                },
+                "lua": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "lua",
+                "value"
+            ],
+            "title": "IsLaunchConditionsSatisfied"
+        },
+        "IsMinPlayerLevelReached": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "value": {
+                    "$ref": "#/definitions/IsMinPlayerLevelReachedValue"
+                },
+                "lua": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "lua",
+                "type",
+                "value"
+            ],
+            "title": "IsMinPlayerLevelReached"
+        },
+        "IsMinPlayerLevelReachedValue": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "operationType": {
+                    "type": "string"
+                },
+                "left": {
+                    "$ref": "#/definitions/PlayerLevel"
+                },
+                "right": {
+                    "$ref": "#/definitions/PlayerLevel"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "left",
+                "operationType",
+                "right",
+                "type"
+            ],
+            "title": "IsMinPlayerLevelReachedValue"
+        },
+        "ResourcePackDownloadConfig": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "packId": {
+                    "type": "string"
+                },
+                "enableCondition": {
+                    "$ref": "#/definitions/EnableCondition"
+                },
+                "enableConditionLua": {
+                    "type": "string"
+                },
+                "requiredCondition": {
+                    "$ref": "#/definitions/RequiredCondition"
+                },
+                "requiredConditionLua": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "enableCondition",
+                "enableConditionLua",
+                "packId",
+                "requiredCondition",
+                "requiredConditionLua"
+            ],
+            "title": "ResourcePackDownloadConfig"
+        },
+        "EnableCondition": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "name",
+                "type"
+            ],
+            "title": "EnableCondition"
+        },
+        "RequiredCondition": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "operationType": {
+                    "type": "string"
+                },
+                "playerLevel": {
+                    "$ref": "#/definitions/PlayerLevel"
+                },
+                "minRequiredLevel": {
+                    "$ref": "#/definitions/MinRequiredLevel"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "minRequiredLevel",
+                "operationType",
+                "playerLevel",
+                "type"
+            ],
+            "title": "RequiredCondition"
+        },
+        "MinRequiredLevel": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "offset": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "name",
+                "offset"
+            ],
+            "title": "MinRequiredLevel"
+        },
+        "ScheduleConfig": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "commonEnabledCondition": {
+                    "$ref": "#/definitions/CommonEnabledCondition"
+                },
+                "commonEnabledConditionLua": {
+                    "type": "string"
+                },
+                "scheduleConfigs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ScheduleConfigElement"
+                    }
+                },
+                "needTryActivateOnActivate": {
+                    "type": "boolean"
+                },
+                "needTryActivateOnUpdate": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "commonEnabledCondition",
+                "commonEnabledConditionLua",
+                "needTryActivateOnActivate",
+                "needTryActivateOnUpdate",
+                "scheduleConfigs"
+            ],
+            "title": "ScheduleConfig"
+        },
+        "ScheduleConfigElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "cheatLaunch": {
+                    "type": "boolean"
+                },
+                "activateStart": {
+                    "type": "integer"
+                },
+                "activateEnd": {
+                    "type": "integer"
+                },
+                "enabled": {
+                    "$ref": "#/definitions/Enabled"
+                }
+            },
+            "required": [
+                "activateEnd",
+                "activateStart",
+                "id",
+                "type"
+            ],
+            "title": "ScheduleConfigElement"
+        },
+        "Enabled": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "conditionAsset": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "conditionAsset"
+            ],
+            "title": "Enabled"
+        },
+        "SportsMissionConfig": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "balanceAsset": {
+                    "$ref": "#/definitions/BalanceAsset"
+                },
+                "rewardsBalanceAsset": {
+                    "$ref": "#/definitions/BalanceAsset"
+                }
+            },
+            "required": [
+                "balanceAsset",
+                "rewardsBalanceAsset"
+            ],
+            "title": "SportsMissionConfig"
+        },
+        "BalanceAsset": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "assetType": {
+                    "type": "string"
+                },
+                "assetId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "assetId",
+                "assetType"
+            ],
+            "title": "BalanceAsset"
+        },
+        "SportsMissionsConsts": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "contextName": {
+                    "type": "string"
+                },
+                "variables": {
+                    "$ref": "#/definitions/SportsMissionsConstsVariables"
+                }
+            },
+            "required": [
+                "contextName",
+                "variables"
+            ],
+            "title": "SportsMissionsConsts"
+        },
+        "SportsMissionsConstsVariables": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "IS_TUTORIAL_ENABLED": {
+                    "type": "boolean"
+                },
+                "SHOW_TUTORIAL_ON_START": {
+                    "type": "boolean"
+                },
+                "MIN_START_STORY_LEVEL": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "IS_TUTORIAL_ENABLED",
+                "MIN_START_STORY_LEVEL",
+                "SHOW_TUTORIAL_ON_START"
+            ],
+            "title": "SportsMissionsConstsVariables"
+        },
+        "StateMachineConfig": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "defaultState": {
+                    "type": "string"
+                },
+                "states": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/State"
+                    }
+                },
+                "handlersSettings": {
+                    "$ref": "#/definitions/HandlersSettings"
+                }
+            },
+            "required": [
+                "defaultState",
+                "handlersSettings",
+                "states"
+            ],
+            "title": "StateMachineConfig"
+        },
+        "HandlersSettings": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "InProgress": {
+                    "$ref": "#/definitions/InProgress"
+                }
+            },
+            "required": [
+                "InProgress"
+            ],
+            "title": "HandlersSettings"
+        },
+        "InProgress": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "eventsFilter": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "statesFilter": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "eventsFilter",
+                "statesFilter"
+            ],
+            "title": "InProgress"
+        },
+        "State": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "transitions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Transition"
+                    }
+                }
+            },
+            "required": [
+                "name",
+                "transitions"
+            ],
+            "title": "State"
+        },
+        "Transition": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "target": {
+                    "type": "string"
+                },
+                "triggerIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "target",
+                "triggerIds"
+            ],
+            "title": "Transition"
+        }
+    }
+}
