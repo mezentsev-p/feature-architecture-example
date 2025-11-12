@@ -40,7 +40,9 @@ public:
 
 		// Balance
 		_DI.Add<SportsMissionsBalance>([](){
-			return Util::LoadGDB("SportsMissions_balance.gdb");
+			auto Balance = Core::MakeIntrusive<SportsMissionsBalance>();
+			Balance->Init();
+			return Balance;
 		})
 
 		// Components
