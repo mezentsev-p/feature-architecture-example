@@ -16,8 +16,7 @@ private:
 	DI::Container _DI;
 
 	Ptr<SportsMissionsLogic> _logic;
-	Ptr<SportsMissionsPackDownloader> _packDownloader;
-	Ptr<SportsMissionsScheduler> _scheduler;
+	Ptr<SportsMissionsLoader> _loader;
 
 public:
 	bool Compose(ServiceLocator& sl) {
@@ -37,6 +36,9 @@ public:
 		_DI.Add<ResourcePackDownloadConfig>([&DI=_DI](){
 			return DI.Resolve<SportsMissionsConfig>().resource_pack_download_config;
 		});
+		_DI.Add<LocalContextConfigVariables>([&DI=_DI](){
+			return DI.Resolve<SportsMissionsConfig>().local_context_config.variables;
+		});
 
 		// Balance
 		_DI.Add<SportsMissionsBalance>([](){
@@ -55,19 +57,31 @@ public:
 		_DI.Add<SportsMissionsScheduler>([&DI=_DI](){
 			return SportsMissionsScheduler::Instance(DI.Resolve<ScheduleConfig>())
 		});
+		_DI.Add<SportsMissionsLoader>([this, &DI=_DI](){
+			return SportsMissionsLoader::Instance(
+					DI.Resolve<LocalContextConfigVariables>(),
+					DI.Resolve<SportsMissionsScheduler>(),
+					DI.Resolve<SportsMissionsPackDownloader>(),
+					this
+				)
+		});
 		_DI.Add<SportsMissionsLogic>([&DI=_DI](){
 			return SportsMissionsLogic::Instance(
 					DI.Resolve<SportsMissionsConfig>(),
 					DI.Resolve<SportsMissionsBalance>(),
-					DI.Resolve<IMatch3>()
+					DI.Resolve<IMatch3>(),
+					DI.Resolve<IPlayerInfo>()
 				);
 		});
 
 		// Compose
-		_logic = _DI.Resolve<SportsMissionsLogic>();
-		_packDownloader = _DI.Resolve(SportsMissionsPackDownloader);
-		_scheduler = _DI.Resolve(SportsMissionsScheduler);
+		_loader = _DI.Resolve(SportsMissionsLoader);
 
 		return true;
+	}
+
+	void OnLoaded()
+	{
+		_logic = _DI.Resolve<SportsMissionsLogic>();
 	}
 }
