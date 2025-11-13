@@ -20,10 +20,17 @@ private:
 
 		_UIContext->BindVariable("IsTutorialEnabled", _config.variables.is_tutorial_enabled);
 		// More variables...
-		_UIContext->BindFunction("OnWelcomeWindowClosed", [this](){ if (_logic) { _logic->OnWelcomeWindowClosed(); } });
+		_UIContext->BindFunction("OnWelcomeWindowClosed", [this](){ OnWelcomeWindowClosed(); });
 		// More callbacks...
 	}
 
+	void OnWelcomeWindowClosed()
+	{
+		if (_logic) { 
+			_logic->StartMission();
+		}
+	}
+	
 	// Logic...
 
 public:

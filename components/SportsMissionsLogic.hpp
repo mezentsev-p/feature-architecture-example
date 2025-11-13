@@ -14,14 +14,13 @@ private:
 	void SetMatch3(IMatch3* match3) { _match3 = match3; };
 	void SetPlayerInfo(IPlayerInfo* playerInfo) { _playerInfo = playerInfo; };
 
-	// Logic...
-
 public:
-	// UI callbacks
-	void OnWelcomeWindowClosed()
+	void StartMission()
 	{
 		// Do something
 	}
+
+	// Logic...
 
 public:
 	Ptr<SportsMissionsLogic> Instance(SportsMissionsConfig&& config, SportsMissionsBalance&& balance, IMatch3* match3, IPlayerInfo* playerInfo)
