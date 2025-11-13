@@ -16,35 +16,9 @@
           }
         },
         "IsLaunchConditionsSatisfied": {
-          "value": {
-            "type": "boolAnd",
-            "conditions": [
-              {
-                "type": "contextBool",
-                "name": "context.IsAllPacksDownloaded"
-              },
-              {
-                "type": "boolNot",
-                "name": "context.IsEventActive"
-              }
-            ],
-            "description": "All packs downloaded AND event not active"
-          },
           "lua": "return GetContextValue('IsAllPacksDownloaded') and not GetContextValue('IsEventActive')"
         },
         "IsEventActive": {
-          "type": "boolValueVariable",
-          "value": {
-            "type": "stringCompare",
-            "operationType": "NotEquals",
-            "left": {
-              "name": "property.@gffStateMachineComponent:currentState"
-            },
-            "right": {
-              "value": "Disabled"
-            },
-            "description": "State machine state is not 'Disabled'"
-          },
           "lua": "return GetPropertyValue('@gffStateMachineComponent:currentState') ~= 'Disabled'"
         },
         "CurrentState": {
@@ -55,52 +29,17 @@
           }
         },
         "IsMinPlayerLevelReached": {
-          "type": "boolValueVariable",
-          "value": {
-            "type": "integerCompare",
-            "operationType": "MoreOrEquals",
-            "left": {
-              "name": "global.CurrMainStoryLevel"
-            },
-            "right": {
-              "name": "context.MIN_START_STORY_LEVEL"
-            },
-            "description": "Player level must be >= MIN_START_STORY_LEVEL"
-          },
           "lua": "return GetGlobalValue('CurrMainStoryLevel') >= GetContextValue('MIN_START_STORY_LEVEL')"
         },
         "CheckLaunchRequirements": {
-          "type": "boolValueVariable",
-          "value": {
-            "type": "boolAnd",
-            "conditions": [
-              {
-                "type": "contextBool",
-                "name": "context.IsMinPlayerLevelReached"
-              }
-            ],
-            "description": "Check if launch requirements are satisfied (min player level)"
-          },
           "lua": "return GetContextValue('IsMinPlayerLevelReached')"
         }
     }
   },
   "ScheduleConfig": {
     "commonEnabledCondition": {
-      "type": "boolAnd",
-      "conditions": [
-        {
-          "type": "contextBool",
-          "name": "context.CheckLaunchRequirements"
-        },
-        {
-          "type": "contextBool",
-          "name": "context.IsLaunchConditionsSatisfied"
-        }
-      ],
-      "description": "Check launch requirements AND launch conditions satisfied"
+      "lua": "return GetContextValue('CheckLaunchRequirements') and GetContextValue('IsLaunchConditionsSatisfied')"
     },
-    "commonEnabledConditionLua": "return GetContextValue('CheckLaunchRequirements') and GetContextValue('IsLaunchConditionsSatisfied')",
     "scheduleConfigs": [
       {
         "id": "SportsMissions_CheatStart",
@@ -135,24 +74,11 @@
   "ResourcePackDownloadConfig": {
     "packId": "SportsMissions",
     "enableCondition": {
-      "type": "contextBool",
-      "name": "context.IsEventActive",
-      "description": "Event must be active"
+      "lua": "return GetContextValue('IsEventActive')"
     },
-    "enableConditionLua": "return GetContextValue('IsEventActive')",
     "requiredCondition": {
-      "type": "integerCompare",
-      "operationType": "MoreOrEquals",
-      "playerLevel": {
-        "name": "global.CurrMainStoryLevel"
-      },
-      "minRequiredLevel": {
-        "name": "context.MIN_START_STORY_LEVEL",
-        "offset": -5
-      },
-      "description": "Player level must be at least (MIN_START_STORY_LEVEL - 5)"
-    },
-    "requiredConditionLua": "return GetGlobalValue('CurrMainStoryLevel') >= (GetContextValue('MIN_START_STORY_LEVEL') - 5)"
+      "lua": "return GetGlobalValue('CurrMainStoryLevel') >= (GetContextValue('MIN_START_STORY_LEVEL') - 5)"
+    }
   },
   "ContextRegistratorConfig": {
     "globalId": "GlobalSportsMissionsLoaderFeature",

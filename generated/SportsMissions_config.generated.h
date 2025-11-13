@@ -89,20 +89,7 @@ namespace quicktype {
         std::string context_component_holder;
     };
 
-    struct Condition {
-        std::string type;
-        std::string name;
-    };
-
-    struct CommonEnabledCondition {
-        std::string type;
-        std::vector<Condition> conditions;
-        std::string description;
-    };
-
-    struct CheckLaunchRequirements {
-        std::string type;
-        CommonEnabledCondition value;
+    struct EnableCondition {
         std::string lua;
     };
 
@@ -124,54 +111,13 @@ namespace quicktype {
         IsAllPacksDownloadedValue value;
     };
 
-    struct PlayerLevel {
-        std::string name;
-    };
-
-    struct Right {
-        std::string value;
-    };
-
-    struct IsEventActiveValue {
-        std::string type;
-        std::string operation_type;
-        PlayerLevel left;
-        Right right;
-        std::string description;
-    };
-
-    struct IsEventActive {
-        std::string type;
-        IsEventActiveValue value;
-        std::string lua;
-    };
-
-    struct IsLaunchConditionsSatisfied {
-        CommonEnabledCondition value;
-        std::string lua;
-    };
-
-    struct IsMinPlayerLevelReachedValue {
-        std::string type;
-        std::string operation_type;
-        PlayerLevel left;
-        PlayerLevel right;
-        std::string description;
-    };
-
-    struct IsMinPlayerLevelReached {
-        std::string type;
-        IsMinPlayerLevelReachedValue value;
-        std::string lua;
-    };
-
     struct LocalContextConfigVariables {
         IsAllPacksDownloaded is_all_packs_downloaded;
-        IsLaunchConditionsSatisfied is_launch_conditions_satisfied;
-        IsEventActive is_event_active;
+        EnableCondition is_launch_conditions_satisfied;
+        EnableCondition is_event_active;
         CurrentState current_state;
-        IsMinPlayerLevelReached is_min_player_level_reached;
-        CheckLaunchRequirements check_launch_requirements;
+        EnableCondition is_min_player_level_reached;
+        EnableCondition check_launch_requirements;
     };
 
     struct LocalContextConfig {
@@ -179,31 +125,10 @@ namespace quicktype {
         LocalContextConfigVariables variables;
     };
 
-    struct EnableCondition {
-        std::string type;
-        std::string name;
-        std::string description;
-    };
-
-    struct MinRequiredLevel {
-        std::string name;
-        int64_t offset;
-    };
-
-    struct RequiredCondition {
-        std::string type;
-        std::string operation_type;
-        PlayerLevel player_level;
-        MinRequiredLevel min_required_level;
-        std::string description;
-    };
-
     struct ResourcePackDownloadConfig {
         std::string pack_id;
         EnableCondition enable_condition;
-        std::string enable_condition_lua;
-        RequiredCondition required_condition;
-        std::string required_condition_lua;
+        EnableCondition required_condition;
     };
 
     struct Enabled {
@@ -220,8 +145,7 @@ namespace quicktype {
     };
 
     struct ScheduleConfig {
-        CommonEnabledCondition common_enabled_condition;
-        std::string common_enabled_condition_lua;
+        EnableCondition common_enabled_condition;
         std::vector<ScheduleConfigElement> schedule_configs;
         bool need_try_activate_on_activate;
         bool need_try_activate_on_update;
@@ -288,14 +212,8 @@ namespace quicktype {
     void from_json(const json & j, ContextRegistratorConfig & x);
     void to_json(json & j, const ContextRegistratorConfig & x);
 
-    void from_json(const json & j, Condition & x);
-    void to_json(json & j, const Condition & x);
-
-    void from_json(const json & j, CommonEnabledCondition & x);
-    void to_json(json & j, const CommonEnabledCondition & x);
-
-    void from_json(const json & j, CheckLaunchRequirements & x);
-    void to_json(json & j, const CheckLaunchRequirements & x);
+    void from_json(const json & j, EnableCondition & x);
+    void to_json(json & j, const EnableCondition & x);
 
     void from_json(const json & j, CurrentStateValue & x);
     void to_json(json & j, const CurrentStateValue & x);
@@ -309,41 +227,11 @@ namespace quicktype {
     void from_json(const json & j, IsAllPacksDownloaded & x);
     void to_json(json & j, const IsAllPacksDownloaded & x);
 
-    void from_json(const json & j, PlayerLevel & x);
-    void to_json(json & j, const PlayerLevel & x);
-
-    void from_json(const json & j, Right & x);
-    void to_json(json & j, const Right & x);
-
-    void from_json(const json & j, IsEventActiveValue & x);
-    void to_json(json & j, const IsEventActiveValue & x);
-
-    void from_json(const json & j, IsEventActive & x);
-    void to_json(json & j, const IsEventActive & x);
-
-    void from_json(const json & j, IsLaunchConditionsSatisfied & x);
-    void to_json(json & j, const IsLaunchConditionsSatisfied & x);
-
-    void from_json(const json & j, IsMinPlayerLevelReachedValue & x);
-    void to_json(json & j, const IsMinPlayerLevelReachedValue & x);
-
-    void from_json(const json & j, IsMinPlayerLevelReached & x);
-    void to_json(json & j, const IsMinPlayerLevelReached & x);
-
     void from_json(const json & j, LocalContextConfigVariables & x);
     void to_json(json & j, const LocalContextConfigVariables & x);
 
     void from_json(const json & j, LocalContextConfig & x);
     void to_json(json & j, const LocalContextConfig & x);
-
-    void from_json(const json & j, EnableCondition & x);
-    void to_json(json & j, const EnableCondition & x);
-
-    void from_json(const json & j, MinRequiredLevel & x);
-    void to_json(json & j, const MinRequiredLevel & x);
-
-    void from_json(const json & j, RequiredCondition & x);
-    void to_json(json & j, const RequiredCondition & x);
 
     void from_json(const json & j, ResourcePackDownloadConfig & x);
     void to_json(json & j, const ResourcePackDownloadConfig & x);
@@ -398,40 +286,12 @@ namespace quicktype {
         j["contextComponentHolder"] = x.context_component_holder;
     }
 
-    inline void from_json(const json & j, Condition& x) {
-        x.type = j.at("type").get<std::string>();
-        x.name = j.at("name").get<std::string>();
-    }
-
-    inline void to_json(json & j, const Condition & x) {
-        j = json::object();
-        j["type"] = x.type;
-        j["name"] = x.name;
-    }
-
-    inline void from_json(const json & j, CommonEnabledCondition& x) {
-        x.type = j.at("type").get<std::string>();
-        x.conditions = j.at("conditions").get<std::vector<Condition>>();
-        x.description = j.at("description").get<std::string>();
-    }
-
-    inline void to_json(json & j, const CommonEnabledCondition & x) {
-        j = json::object();
-        j["type"] = x.type;
-        j["conditions"] = x.conditions;
-        j["description"] = x.description;
-    }
-
-    inline void from_json(const json & j, CheckLaunchRequirements& x) {
-        x.type = j.at("type").get<std::string>();
-        x.value = j.at("value").get<CommonEnabledCondition>();
+    inline void from_json(const json & j, EnableCondition& x) {
         x.lua = j.at("lua").get<std::string>();
     }
 
-    inline void to_json(json & j, const CheckLaunchRequirements & x) {
+    inline void to_json(json & j, const EnableCondition & x) {
         j = json::object();
-        j["type"] = x.type;
-        j["value"] = x.value;
         j["lua"] = x.lua;
     }
 
@@ -475,102 +335,13 @@ namespace quicktype {
         j["value"] = x.value;
     }
 
-    inline void from_json(const json & j, PlayerLevel& x) {
-        x.name = j.at("name").get<std::string>();
-    }
-
-    inline void to_json(json & j, const PlayerLevel & x) {
-        j = json::object();
-        j["name"] = x.name;
-    }
-
-    inline void from_json(const json & j, Right& x) {
-        x.value = j.at("value").get<std::string>();
-    }
-
-    inline void to_json(json & j, const Right & x) {
-        j = json::object();
-        j["value"] = x.value;
-    }
-
-    inline void from_json(const json & j, IsEventActiveValue& x) {
-        x.type = j.at("type").get<std::string>();
-        x.operation_type = j.at("operationType").get<std::string>();
-        x.left = j.at("left").get<PlayerLevel>();
-        x.right = j.at("right").get<Right>();
-        x.description = j.at("description").get<std::string>();
-    }
-
-    inline void to_json(json & j, const IsEventActiveValue & x) {
-        j = json::object();
-        j["type"] = x.type;
-        j["operationType"] = x.operation_type;
-        j["left"] = x.left;
-        j["right"] = x.right;
-        j["description"] = x.description;
-    }
-
-    inline void from_json(const json & j, IsEventActive& x) {
-        x.type = j.at("type").get<std::string>();
-        x.value = j.at("value").get<IsEventActiveValue>();
-        x.lua = j.at("lua").get<std::string>();
-    }
-
-    inline void to_json(json & j, const IsEventActive & x) {
-        j = json::object();
-        j["type"] = x.type;
-        j["value"] = x.value;
-        j["lua"] = x.lua;
-    }
-
-    inline void from_json(const json & j, IsLaunchConditionsSatisfied& x) {
-        x.value = j.at("value").get<CommonEnabledCondition>();
-        x.lua = j.at("lua").get<std::string>();
-    }
-
-    inline void to_json(json & j, const IsLaunchConditionsSatisfied & x) {
-        j = json::object();
-        j["value"] = x.value;
-        j["lua"] = x.lua;
-    }
-
-    inline void from_json(const json & j, IsMinPlayerLevelReachedValue& x) {
-        x.type = j.at("type").get<std::string>();
-        x.operation_type = j.at("operationType").get<std::string>();
-        x.left = j.at("left").get<PlayerLevel>();
-        x.right = j.at("right").get<PlayerLevel>();
-        x.description = j.at("description").get<std::string>();
-    }
-
-    inline void to_json(json & j, const IsMinPlayerLevelReachedValue & x) {
-        j = json::object();
-        j["type"] = x.type;
-        j["operationType"] = x.operation_type;
-        j["left"] = x.left;
-        j["right"] = x.right;
-        j["description"] = x.description;
-    }
-
-    inline void from_json(const json & j, IsMinPlayerLevelReached& x) {
-        x.type = j.at("type").get<std::string>();
-        x.value = j.at("value").get<IsMinPlayerLevelReachedValue>();
-        x.lua = j.at("lua").get<std::string>();
-    }
-
-    inline void to_json(json & j, const IsMinPlayerLevelReached & x) {
-        j = json::object();
-        j["type"] = x.type;
-        j["value"] = x.value;
-        j["lua"] = x.lua;
-    }
-
     inline void from_json(const json & j, LocalContextConfigVariables& x) {
         x.is_all_packs_downloaded = j.at("IsAllPacksDownloaded").get<IsAllPacksDownloaded>();
-        x.is_launch_conditions_satisfied = j.at("IsLaunchConditionsSatisfied").get<IsLaunchConditionsSatisfied>();
-        x.is_event_active = j.at("IsEventActive").get<IsEventActive>();
+        x.is_launch_conditions_satisfied = j.at("IsLaunchConditionsSatisfied").get<EnableCondition>();
+        x.is_event_active = j.at("IsEventActive").get<EnableCondition>();
         x.current_state = j.at("CurrentState").get<CurrentState>();
-        x.is_min_player_level_reached = j.at("IsMinPlayerLevelReached").get<IsMinPlayerLevelReached>();
-        x.check_launch_requirements = j.at("CheckLaunchRequirements").get<CheckLaunchRequirements>();
+        x.is_min_player_level_reached = j.at("IsMinPlayerLevelReached").get<EnableCondition>();
+        x.check_launch_requirements = j.at("CheckLaunchRequirements").get<EnableCondition>();
     }
 
     inline void to_json(json & j, const LocalContextConfigVariables & x) {
@@ -594,62 +365,17 @@ namespace quicktype {
         j["variables"] = x.variables;
     }
 
-    inline void from_json(const json & j, EnableCondition& x) {
-        x.type = j.at("type").get<std::string>();
-        x.name = j.at("name").get<std::string>();
-        x.description = j.at("description").get<std::string>();
-    }
-
-    inline void to_json(json & j, const EnableCondition & x) {
-        j = json::object();
-        j["type"] = x.type;
-        j["name"] = x.name;
-        j["description"] = x.description;
-    }
-
-    inline void from_json(const json & j, MinRequiredLevel& x) {
-        x.name = j.at("name").get<std::string>();
-        x.offset = j.at("offset").get<int64_t>();
-    }
-
-    inline void to_json(json & j, const MinRequiredLevel & x) {
-        j = json::object();
-        j["name"] = x.name;
-        j["offset"] = x.offset;
-    }
-
-    inline void from_json(const json & j, RequiredCondition& x) {
-        x.type = j.at("type").get<std::string>();
-        x.operation_type = j.at("operationType").get<std::string>();
-        x.player_level = j.at("playerLevel").get<PlayerLevel>();
-        x.min_required_level = j.at("minRequiredLevel").get<MinRequiredLevel>();
-        x.description = j.at("description").get<std::string>();
-    }
-
-    inline void to_json(json & j, const RequiredCondition & x) {
-        j = json::object();
-        j["type"] = x.type;
-        j["operationType"] = x.operation_type;
-        j["playerLevel"] = x.player_level;
-        j["minRequiredLevel"] = x.min_required_level;
-        j["description"] = x.description;
-    }
-
     inline void from_json(const json & j, ResourcePackDownloadConfig& x) {
         x.pack_id = j.at("packId").get<std::string>();
         x.enable_condition = j.at("enableCondition").get<EnableCondition>();
-        x.enable_condition_lua = j.at("enableConditionLua").get<std::string>();
-        x.required_condition = j.at("requiredCondition").get<RequiredCondition>();
-        x.required_condition_lua = j.at("requiredConditionLua").get<std::string>();
+        x.required_condition = j.at("requiredCondition").get<EnableCondition>();
     }
 
     inline void to_json(json & j, const ResourcePackDownloadConfig & x) {
         j = json::object();
         j["packId"] = x.pack_id;
         j["enableCondition"] = x.enable_condition;
-        j["enableConditionLua"] = x.enable_condition_lua;
         j["requiredCondition"] = x.required_condition;
-        j["requiredConditionLua"] = x.required_condition_lua;
     }
 
     inline void from_json(const json & j, Enabled& x) {
@@ -681,8 +407,7 @@ namespace quicktype {
     }
 
     inline void from_json(const json & j, ScheduleConfig& x) {
-        x.common_enabled_condition = j.at("commonEnabledCondition").get<CommonEnabledCondition>();
-        x.common_enabled_condition_lua = j.at("commonEnabledConditionLua").get<std::string>();
+        x.common_enabled_condition = j.at("commonEnabledCondition").get<EnableCondition>();
         x.schedule_configs = j.at("scheduleConfigs").get<std::vector<ScheduleConfigElement>>();
         x.need_try_activate_on_activate = j.at("needTryActivateOnActivate").get<bool>();
         x.need_try_activate_on_update = j.at("needTryActivateOnUpdate").get<bool>();
@@ -691,7 +416,6 @@ namespace quicktype {
     inline void to_json(json & j, const ScheduleConfig & x) {
         j = json::object();
         j["commonEnabledCondition"] = x.common_enabled_condition;
-        j["commonEnabledConditionLua"] = x.common_enabled_condition_lua;
         j["scheduleConfigs"] = x.schedule_configs;
         j["needTryActivateOnActivate"] = x.need_try_activate_on_activate;
         j["needTryActivateOnUpdate"] = x.need_try_activate_on_update;

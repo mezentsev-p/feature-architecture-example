@@ -1,8 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Welcome",
+    "$ref": "#/definitions/SportsMissionsConfig",
     "definitions": {
-        "Welcome": {
+        "SportsMissionsConfig": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -37,7 +37,7 @@
                 "SportsMissions_Consts",
                 "StateMachineConfig"
             ],
-            "title": "Welcome"
+            "title": "SportsMissionsConfig"
         },
         "ContextRegistratorConfig": {
             "type": "object",
@@ -81,19 +81,19 @@
                     "$ref": "#/definitions/IsAllPacksDownloaded"
                 },
                 "IsLaunchConditionsSatisfied": {
-                    "$ref": "#/definitions/IsLaunchConditionsSatisfied"
+                    "$ref": "#/definitions/EnableCondition"
                 },
                 "IsEventActive": {
-                    "$ref": "#/definitions/IsEventActive"
+                    "$ref": "#/definitions/EnableCondition"
                 },
                 "CurrentState": {
                     "$ref": "#/definitions/CurrentState"
                 },
                 "IsMinPlayerLevelReached": {
-                    "$ref": "#/definitions/IsMinPlayerLevelReached"
+                    "$ref": "#/definitions/EnableCondition"
                 },
                 "CheckLaunchRequirements": {
-                    "$ref": "#/definitions/CheckLaunchRequirements"
+                    "$ref": "#/definitions/EnableCondition"
                 }
             },
             "required": [
@@ -106,67 +106,18 @@
             ],
             "title": "LocalContextConfigVariables"
         },
-        "CheckLaunchRequirements": {
+        "EnableCondition": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "type": {
-                    "type": "string"
-                },
-                "value": {
-                    "$ref": "#/definitions/CommonEnabledCondition"
-                },
                 "lua": {
                     "type": "string"
                 }
             },
             "required": [
-                "lua",
-                "type",
-                "value"
+                "lua"
             ],
-            "title": "CheckLaunchRequirements"
-        },
-        "CommonEnabledCondition": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "type": {
-                    "type": "string"
-                },
-                "conditions": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Condition"
-                    }
-                },
-                "description": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "conditions",
-                "description",
-                "type"
-            ],
-            "title": "CommonEnabledCondition"
-        },
-        "Condition": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "type": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "name",
-                "type"
-            ],
-            "title": "Condition"
+            "title": "EnableCondition"
         },
         "CurrentState": {
             "type": "object",
@@ -228,149 +179,6 @@
             ],
             "title": "IsAllPacksDownloadedValue"
         },
-        "IsEventActive": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "type": {
-                    "type": "string"
-                },
-                "value": {
-                    "$ref": "#/definitions/IsEventActiveValue"
-                },
-                "lua": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "lua",
-                "type",
-                "value"
-            ],
-            "title": "IsEventActive"
-        },
-        "IsEventActiveValue": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "type": {
-                    "type": "string"
-                },
-                "operationType": {
-                    "type": "string"
-                },
-                "left": {
-                    "$ref": "#/definitions/PlayerLevel"
-                },
-                "right": {
-                    "$ref": "#/definitions/Right"
-                },
-                "description": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "description",
-                "left",
-                "operationType",
-                "right",
-                "type"
-            ],
-            "title": "IsEventActiveValue"
-        },
-        "PlayerLevel": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "name": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "name"
-            ],
-            "title": "PlayerLevel"
-        },
-        "Right": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "value"
-            ],
-            "title": "Right"
-        },
-        "IsLaunchConditionsSatisfied": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "value": {
-                    "$ref": "#/definitions/CommonEnabledCondition"
-                },
-                "lua": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "lua",
-                "value"
-            ],
-            "title": "IsLaunchConditionsSatisfied"
-        },
-        "IsMinPlayerLevelReached": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "type": {
-                    "type": "string"
-                },
-                "value": {
-                    "$ref": "#/definitions/IsMinPlayerLevelReachedValue"
-                },
-                "lua": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "lua",
-                "type",
-                "value"
-            ],
-            "title": "IsMinPlayerLevelReached"
-        },
-        "IsMinPlayerLevelReachedValue": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "type": {
-                    "type": "string"
-                },
-                "operationType": {
-                    "type": "string"
-                },
-                "left": {
-                    "$ref": "#/definitions/PlayerLevel"
-                },
-                "right": {
-                    "$ref": "#/definitions/PlayerLevel"
-                },
-                "description": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "description",
-                "left",
-                "operationType",
-                "right",
-                "type"
-            ],
-            "title": "IsMinPlayerLevelReachedValue"
-        },
         "ResourcePackDownloadConfig": {
             "type": "object",
             "additionalProperties": false,
@@ -381,101 +189,23 @@
                 "enableCondition": {
                     "$ref": "#/definitions/EnableCondition"
                 },
-                "enableConditionLua": {
-                    "type": "string"
-                },
                 "requiredCondition": {
-                    "$ref": "#/definitions/RequiredCondition"
-                },
-                "requiredConditionLua": {
-                    "type": "string"
+                    "$ref": "#/definitions/EnableCondition"
                 }
             },
             "required": [
                 "enableCondition",
-                "enableConditionLua",
                 "packId",
-                "requiredCondition",
-                "requiredConditionLua"
+                "requiredCondition"
             ],
             "title": "ResourcePackDownloadConfig"
-        },
-        "EnableCondition": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "type": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "description",
-                "name",
-                "type"
-            ],
-            "title": "EnableCondition"
-        },
-        "RequiredCondition": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "type": {
-                    "type": "string"
-                },
-                "operationType": {
-                    "type": "string"
-                },
-                "playerLevel": {
-                    "$ref": "#/definitions/PlayerLevel"
-                },
-                "minRequiredLevel": {
-                    "$ref": "#/definitions/MinRequiredLevel"
-                },
-                "description": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "description",
-                "minRequiredLevel",
-                "operationType",
-                "playerLevel",
-                "type"
-            ],
-            "title": "RequiredCondition"
-        },
-        "MinRequiredLevel": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "name": {
-                    "type": "string"
-                },
-                "offset": {
-                    "type": "integer"
-                }
-            },
-            "required": [
-                "name",
-                "offset"
-            ],
-            "title": "MinRequiredLevel"
         },
         "ScheduleConfig": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
                 "commonEnabledCondition": {
-                    "$ref": "#/definitions/CommonEnabledCondition"
-                },
-                "commonEnabledConditionLua": {
-                    "type": "string"
+                    "$ref": "#/definitions/EnableCondition"
                 },
                 "scheduleConfigs": {
                     "type": "array",
@@ -492,7 +222,6 @@
             },
             "required": [
                 "commonEnabledCondition",
-                "commonEnabledConditionLua",
                 "needTryActivateOnActivate",
                 "needTryActivateOnUpdate",
                 "scheduleConfigs"
