@@ -2,6 +2,7 @@
 #include <ServiceLocator>
 #include <Common/IMatch3.h>
 #include <Common/IPlayerInfo.h>
+#include <Common/IUIScripting>
 
 #include <generated/SportsMissions_config.generated.h>
 
@@ -17,12 +18,14 @@ private:
 
 	Ptr<SportsMissionsLogic> _logic;
 	Ptr<SportsMissionsLoader> _loader;
+	Ptr<SportsMissionsUILogic> _UILogic;
 
 public:
 	bool Compose(ServiceLocator& sl) {
 		// Common services
-		_DI.Add<IMatch3>([](){ return sl.Locate<IMatch3>(); });
-		_DI.Add<IPlayerInfo>([](){ return sl.Locate<IPlayerInfo>(); });
+		_DI.Add<IMatch3>([](){ return sl.Get<IMatch3>(); });
+		_DI.Add<IPlayerInfo>([](){ return sl.Get<IPlayerInfo>(); });
+		_DI.Add<IUIScripting>([](){ return sl.Get<IUIScripting>(); });
 
 		// Configs
 		_DI.Add<SportsMissionsConfig>([](){ 
@@ -71,6 +74,13 @@ public:
 					DI.Resolve<SportsMissionsBalance>(),
 					DI.Resolve<IMatch3>(),
 					DI.Resolve<IPlayerInfo>()
+				);
+		});
+		_DI.Add<SportsMissionsUILogic>([&DI=_DI](){
+			return SportsMissionsUILogic::Instance(
+					DI.Resolve<SportsMissionsConfig>(),
+					DI.Resolve<IUIScripting>(),
+					DI.Resolve<SportsMissionsLogic>()
 				);
 		});
 

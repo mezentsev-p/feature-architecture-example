@@ -17,6 +17,13 @@ private:
 	// Logic...
 
 public:
+	// UI callbacks
+	void OnWelcomeWindowClosed()
+	{
+		// Do something
+	}
+
+public:
 	Ptr<SportsMissionsLogic> Instance(SportsMissionsConfig&& config, SportsMissionsBalance&& balance, IMatch3* match3, IPlayerInfo* playerInfo)
 	{
 		auto Instance = Core::Make<SportsMissionsLogic>();
