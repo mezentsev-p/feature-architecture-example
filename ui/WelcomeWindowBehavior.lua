@@ -2,25 +2,39 @@ local LuaBehaviour = require('VsoLua.LuaBehaviour')
 
 ---@class WelcomeWindowBehaviour : LuaBehaviour
 local WelcomeWindowBehaviour = {
-	isTutorialEnabled = Context.IsTutorialEnabled,
-	closeButton = Visual.NodeRef(),
-	tutorialText = Visual.NodeRef()
+	startButton = Visual.NodeRef(),
+	timerAnimation = Visual.NodeRef(),
+	backgroundAnimation = Visual.NodeRef()
 }
 
 VisualUtils.DefineClass(WelcomeWindowBehaviour, LuaBehaviour)
 
 function WelcomeWindowBehaviour:OnAttached()
-	if self.closeButton then
-		self.closeButton.pressedSignal:Subscribe(function(val)
-			Context:OnWelcomeWindowClosed()
+	if self.startButton then
+		self.startButton.pressedSignal:Subscribe(function(val)
+			Context:StartMission()
 		end, self._behaviour)
 	else
-		WriteError("Close button not found")
+		WriteError("Start button not found")
+	end
+end
+
+function WelcomeWindowBehaviour:OnEnabled()
+	if (self.timerAnimation) then
+		self.timerAnimation:startAnimation()
 	end
 
-	if self.tutorialText then
-		self.tutorialText:setProperty("visible", self.isTutorialEnabled)
-	else
-		WriteError("Tutorial text not found")
+	if (self.backgroundAnimation) then
+		self.backgroundAnimation:startAnimation()
+	end
+end
+
+function WelcomeWindowBehaviour:OnDisabled()
+	if (self.timerAnimation) then
+		self.timerAnimation:stopAnimation()
+	end
+
+	if (self.backgroundAnimation) then
+		self.backgroundAnimation:stopAnimation()
 	end
 end

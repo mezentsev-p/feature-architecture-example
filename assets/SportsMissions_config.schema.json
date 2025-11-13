@@ -94,6 +94,9 @@
                 },
                 "CheckLaunchRequirements": {
                     "$ref": "#/definitions/EnableCondition"
+                },
+                "WelcomeWindow": {
+                    "$ref": "#/definitions/WelcomeWindow"
                 }
             },
             "required": [
@@ -102,7 +105,8 @@
                 "IsAllPacksDownloaded",
                 "IsEventActive",
                 "IsLaunchConditionsSatisfied",
-                "IsMinPlayerLevelReached"
+                "IsMinPlayerLevelReached",
+                "WelcomeWindow"
             ],
             "title": "LocalContextConfigVariables"
         },
@@ -178,6 +182,23 @@
                 "binding"
             ],
             "title": "IsAllPacksDownloadedValue"
+        },
+        "WelcomeWindow": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "TitleLabelTextID": {
+                    "type": "string"
+                },
+                "StartButtonTextID": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "StartButtonTextID",
+                "TitleLabelTextID"
+            ],
+            "title": "WelcomeWindow"
         },
         "ResourcePackDownloadConfig": {
             "type": "object",

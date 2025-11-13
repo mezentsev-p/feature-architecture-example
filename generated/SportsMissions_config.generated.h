@@ -111,6 +111,11 @@ namespace quicktype {
         IsAllPacksDownloadedValue value;
     };
 
+    struct WelcomeWindow {
+        std::string title_label_text_id;
+        std::string start_button_text_id;
+    };
+
     struct LocalContextConfigVariables {
         IsAllPacksDownloaded is_all_packs_downloaded;
         EnableCondition is_launch_conditions_satisfied;
@@ -118,6 +123,7 @@ namespace quicktype {
         CurrentState current_state;
         EnableCondition is_min_player_level_reached;
         EnableCondition check_launch_requirements;
+        WelcomeWindow welcome_window;
     };
 
     struct LocalContextConfig {
@@ -227,6 +233,9 @@ namespace quicktype {
     void from_json(const json & j, IsAllPacksDownloaded & x);
     void to_json(json & j, const IsAllPacksDownloaded & x);
 
+    void from_json(const json & j, WelcomeWindow & x);
+    void to_json(json & j, const WelcomeWindow & x);
+
     void from_json(const json & j, LocalContextConfigVariables & x);
     void to_json(json & j, const LocalContextConfigVariables & x);
 
@@ -335,6 +344,17 @@ namespace quicktype {
         j["value"] = x.value;
     }
 
+    inline void from_json(const json & j, WelcomeWindow& x) {
+        x.title_label_text_id = j.at("TitleLabelTextID").get<std::string>();
+        x.start_button_text_id = j.at("StartButtonTextID").get<std::string>();
+    }
+
+    inline void to_json(json & j, const WelcomeWindow & x) {
+        j = json::object();
+        j["TitleLabelTextID"] = x.title_label_text_id;
+        j["StartButtonTextID"] = x.start_button_text_id;
+    }
+
     inline void from_json(const json & j, LocalContextConfigVariables& x) {
         x.is_all_packs_downloaded = j.at("IsAllPacksDownloaded").get<IsAllPacksDownloaded>();
         x.is_launch_conditions_satisfied = j.at("IsLaunchConditionsSatisfied").get<EnableCondition>();
@@ -342,6 +362,7 @@ namespace quicktype {
         x.current_state = j.at("CurrentState").get<CurrentState>();
         x.is_min_player_level_reached = j.at("IsMinPlayerLevelReached").get<EnableCondition>();
         x.check_launch_requirements = j.at("CheckLaunchRequirements").get<EnableCondition>();
+        x.welcome_window = j.at("WelcomeWindow").get<WelcomeWindow>();
     }
 
     inline void to_json(json & j, const LocalContextConfigVariables & x) {
@@ -352,6 +373,7 @@ namespace quicktype {
         j["CurrentState"] = x.current_state;
         j["IsMinPlayerLevelReached"] = x.is_min_player_level_reached;
         j["CheckLaunchRequirements"] = x.check_launch_requirements;
+        j["WelcomeWindow"] = x.welcome_window;
     }
 
     inline void from_json(const json & j, LocalContextConfig& x) {

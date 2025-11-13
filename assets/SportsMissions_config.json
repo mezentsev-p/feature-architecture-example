@@ -33,6 +33,10 @@
         },
         "CheckLaunchRequirements": {
           "lua": "return GetContextValue('IsMinPlayerLevelReached')"
+        },
+        "WelcomeWindow": {
+          "TitleLabelTextID": "SportsMissionsTitleLabel",
+          "StartButtonTextID": "SportsMissionsStartButtonLabel"
         }
     }
   },

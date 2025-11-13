@@ -20,6 +20,12 @@ public:
 		// Do something
 	}
 
+	Time GetTimeRemaining()
+	{
+		Time EndTime = magic::GetEndTime();
+		return EndTime - Time::Now()
+	}
+
 	// Logic...
 
 public:

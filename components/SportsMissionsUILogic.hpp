@@ -18,19 +18,26 @@ private:
 		_UIContext = Visual::Make<VarsContext>();
 		_UIScripting->BindContext(_UIContext);
 
-		_UIContext->BindVariable("IsTutorialEnabled", _config.variables.is_tutorial_enabled);
-		// More variables...
-		_UIContext->BindFunction("OnWelcomeWindowClosed", [this](){ OnWelcomeWindowClosed(); });
-		// More callbacks...
+		// Referenced in window xml
+		_UIContext->Set("WelcomeWindow.TitleLabel", GetLocalized(_config.local_context_config.variables.welcome_window.title_label_text_id));
+		_UIContext->Set("WelcomeWindow.StartLabel", GetLocalized(_config.local_context_config.variables.welcome_window.start_button_text_id));
+		// Called from lua behaviour
+		_UIScripting->BindFunction("StartMission", [this](){ StartMission(); });
 	}
 
-	void OnWelcomeWindowClosed()
+	void StartMission()
 	{
 		if (_logic) { 
 			_logic->StartMission();
 		}
 	}
-	
+
+	void Update()
+	{
+		// Referenced in window xml
+		_UIContext.Set("WelcomeWindow.TimerValue", _logic->GetTimeRemaining());
+	}
+
 	// Logic...
 
 public:
