@@ -10,16 +10,16 @@ local WelcomeWindowBehaviour = {
 VisualUtils.DefineClass(WelcomeWindowBehaviour, LuaBehaviour)
 
 function WelcomeWindowBehaviour:OnAttached()
-	if closeButton then
-		closeButton.pressedSignal:Subscribe(function(val)
+	if self.closeButton then
+		self.closeButton.pressedSignal:Subscribe(function(val)
 			Context:OnWelcomeWindowClosed()
 		end, self._behaviour)
 	else
 		WriteError("Close button not found")
 	end
 
-	if tutorialText then
-		tutorialText:setProperty("visible", isTutorialEnabled)
+	if self.tutorialText then
+		self.tutorialText:setProperty("visible", self.isTutorialEnabled)
 	else
 		WriteError("Tutorial text not found")
 	end
