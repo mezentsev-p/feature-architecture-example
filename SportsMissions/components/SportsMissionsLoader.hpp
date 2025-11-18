@@ -8,7 +8,6 @@ private:
 	Ptr<SportsMissionsScheduler> _scheduler;
 	Ptr<SportsMissionsPackDownloader> _packDownloader;
 	WeakPtr<SportsMissions> _sportsMissions;
-
 	Ptr<Condition> _launchCondition;
 
 	SportsMissionsLoader() = default;
