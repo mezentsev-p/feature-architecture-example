@@ -1,0 +1,1043 @@
+<?xml version="1.0"?>
+<asset assetType="sceneObject">
+	<!--comics: 2-->
+	<!--fixes: 8-->
+	<!--gears: 1-->
+	<!--gff: 2-->
+	<!--gffCore: 1-->
+	<!--hs: 20-->
+	<!--m3c: 2-->
+	<!--physics: 2-->
+	<!--quests: 1-->
+	<!--rev: 28-->
+	<!--roomDesign: 9-->
+	<!--vars_context_provider: 1-->
+	<!--vso: 89-->
+	<!--windowManagement: 2-->
+	<root name="UI_BeatRush_MainWindow">
+		<behaviours type="screenBoard">
+			<ptr defaultDevice..editor="iPhone14-Pro-Max:landscapeLeft" fitPolicy="ShowAll" isAutoUpdatable="true" refferenceH="1290" refferenceW="2294">
+				<uid entityId="1468725435" />
+			</ptr>
+		</behaviours>
+		<behaviours type="input">
+			<ptr>
+				<uid entityId="2282423398" />
+			</ptr>
+		</behaviours>
+		<behaviours type="layout">
+			<ptr>
+				<uid entityId="1763616804" />
+			</ptr>
+		</behaviours>
+		<behaviours type="signalSubscription">
+			<ptr>
+				<uid entityId="4251331935" />
+			</ptr>
+		</behaviours>
+		<behaviours type="hSDefaultWindow">
+			<!--baseWindow: signalProxy: 10-->
+			<ptr>
+				<sounds />
+				<uid entityId="2847194742" />
+			</ptr>
+		</behaviours>
+		<behaviours type="locator">
+			<ptr name="BR_Main_Root">
+				<uid entityId="3570101366" />
+			</ptr>
+		</behaviours>
+		<behaviours type="hSWindows">
+			<ptr>
+				<uid entityId="3951213326" />
+			</ptr>
+		</behaviours>
+		<behaviours type="color">
+			<ptr>
+				<uid entityId="3768472824" />
+			</ptr>
+		</behaviours>
+		<behaviours type="varsContext">
+			<!--varsContext: gff: 7-->
+			<ptr>
+				<contextData type="varsContextData">
+					<ptr>
+						<sources type="externalContextVariables">
+							<ptr>
+								<context type="behaviourVarsContextProvider">
+									<ptr>
+										<source path="2847194742" />
+									</ptr>
+								</context>
+							</ptr>
+						</sources>
+						<sources type="externalContextVariables">
+							<ptr>
+								<context type="gffGlobalContextProvider">
+									<ptr contextId="BeatRushPublicLogicContext" />
+								</context>
+							</ptr>
+						</sources>
+					</ptr>
+				</contextData>
+				<uid entityId="3799744113" />
+			</ptr>
+		</behaviours>
+		<behaviours type="LUA">
+			<ptr luaPath="BeatRushMainWindowBehaviour.lua" luaPath..editor..ref="assetType@LUAScript; raw@true">
+				<serializableData type="scriptDataObject">
+					<ptr>
+						<value first="UIContext">
+							<second type="scriptDataRefWrapper">
+								<ptr>
+									<uid entityId="3799744113" />
+								</ptr>
+							</second>
+						</value>
+					</ptr>
+				</serializableData>
+			</ptr>
+		</behaviours>
+		<children name="BG_Rect">
+			<behaviours type="fullScreenRect">
+				<ptr isAutoUpdatable="true">
+					<uid entityId="1685704482" />
+				</ptr>
+			</behaviours>
+			<behaviours type="animation">
+				<ptr>
+					<remoteNodeLocator />
+					<uid entityId="1956213782" />
+				</ptr>
+			</behaviours>
+			<behaviours type="color">
+				<ptr>
+					<uid entityId="2953702226" />
+				</ptr>
+			</behaviours>
+			<children name="BG_Container">
+				<behaviours type="anchoredElement">
+					<ptr autoAttachToParent="true">
+						<horizontalAnchor nrp_1="0.5" />
+						<normalizedPivot x="0.5" y="0.5" />
+						<uid entityId="2215125152" />
+						<verticalAnchor nrp_1="0.5" />
+					</ptr>
+				</behaviours>
+				<behaviours type="color">
+					<ptr>
+						<uid entityId="1612701841" />
+					</ptr>
+				</behaviours>
+				<behaviours type="animation">
+					<ptr>
+						<remoteNodeLocator />
+						<uid entityId="3398952923" />
+					</ptr>
+				</behaviours>
+				<children name="BG_Main">
+					<behaviours type="anchoredElement">
+						<ptr autoAttachToParent="true">
+							<horizontalAnchor nrp_1="0.5" offset_1="-880.0" offset_2="1756.0" />
+							<normalizedPivot x="0.5" y="0.5" />
+							<uid entityId="2040084506" />
+							<verticalAnchor nrp_1="0.5" offset_1="-454.0" offset_2="906.0" />
+						</ptr>
+					</behaviours>
+					<component type="image">
+						<ptr fixPrecision="true" ignoreSpritePivot="true">
+							<spriteOrTexture id="PanelBig" id..editor..ref="assetType@SpriteOrTexture; raw@true" />
+							<uid entityId="3252740390" />
+						</ptr>
+					</component>
+					<transform>
+						<scale x="2.0" y="2.0" z="1.0" />
+					</transform>
+					<uid entityId="2281526198" />
+				</children>
+				<transform />
+				<uid entityId="3468132898" />
+			</children>
+			<transform>
+				<scale x="0.98" y="0.98" z="1.0" />
+			</transform>
+			<uid entityId="4246905713" />
+		</children>
+		<children colorTag..editor="4" name="MainUI_Rect">
+			<behaviours type="fullScreenRect">
+				<ptr ignoreVerticalBounds="true" isAutoUpdatable="true" useSaveArea="true">
+					<uid entityId="3461957621" />
+				</ptr>
+			</behaviours>
+			<children colorTag..editor="4" name="MainContainer">
+				<behaviours type="anchoredElement">
+					<ptr autoAttachToParent="true">
+						<horizontalAnchor nrp_2="1.0" />
+						<normalizedPivot x="0.5" y="0.5" />
+						<uid entityId="4266625334" />
+						<verticalAnchor nrp_2="1.0" />
+					</ptr>
+				</behaviours>
+				<behaviours type="animation">
+					<ptr startMode="Manual">
+						<remoteNodeLocator />
+						<uid entityId="3173098842" />
+					</ptr>
+				</behaviours>
+				<children colorTag..editor="4" comment..editor="НЕ ДЛЯ АНИМАЦИЙ&#10;Для анимации движения блока используйте вложенную ноду RewardsBlock" name="LeftContainer">
+					<behaviours type="anchoredElement">
+						<ptr>
+							<anchorTarget path="4266625334" />
+							<horizontalAnchor nrp_1="0.5" offset_1="-728.0" />
+							<normalizedPivot x="0.5" y="0.5" />
+							<uid entityId="3051238618" />
+							<verticalAnchor nrp_1="0.5" offset_1="-32.0" />
+						</ptr>
+					</behaviours>
+					<behaviours type="animation">
+						<ptr>
+							<remoteNodeLocator />
+							<uid entityId="1174447468" />
+						</ptr>
+					</behaviours>
+					<children name="BG_Main">
+						<behaviours type="anchoredElement">
+							<ptr autoAttachToParent="true">
+								<horizontalAnchor nrp_1="0.5" offset_1="-880.0" offset_2="1756.0" />
+								<normalizedPivot x="0.5" y="0.5" />
+								<uid entityId="2935593479" />
+								<verticalAnchor nrp_1="0.5" offset_1="-589.0" offset_2="906.0" />
+							</ptr>
+						</behaviours>
+						<component type="image">
+							<ptr fixPrecision="true" ignoreSpritePivot="true">
+								<spriteOrTexture id="UI_AW_Char_Olivia" id..editor..ref="assetType@SpriteOrTexture; raw@true" />
+								<uid entityId="4216435651" />
+							</ptr>
+						</component>
+						<transform>
+							<scale x="1.2" y="1.2" z="1.0" />
+						</transform>
+						<uid entityId="3008682869" />
+					</children>
+					<children name="StageHolder">
+						<behaviours type="anchoredElement">
+							<ptr autoAttachToParent="true">
+								<horizontalAnchor nrp_1="0.5" offset_1="-360.0" offset_2="500.0" />
+								<normalizedPivot x="0.5" y="0.5" />
+								<uid entityId="1184596058" />
+								<verticalAnchor nrp_1="0.5" offset_1="550.0" offset_2="50.0" />
+							</ptr>
+						</behaviours>
+						<children name="BG_Main">
+							<behaviours type="anchoredElement">
+								<ptr autoAttachToParent="true">
+									<horizontalAnchor nrp_1="0.5" offset_1="-402.0" offset_2="800.0" />
+									<normalizedPivot x="0.5" y="0.5" />
+									<uid entityId="3347424593" />
+									<verticalAnchor nrp_1="0.5" offset_1="-91.0" offset_2="182.0" />
+								</ptr>
+							</behaviours>
+							<component type="imageMirrored">
+								<ptr color="#F6E4FFFF" fitPolicy="Stretch" horizontalMirror="true" xSliceLeft="0.47" xSliceRight="0.53" ySliceLeft="0.48" ySliceRight="0.52">
+									<texture id="KIT_Panel_LBoard@BW" id..editor..ref="assetType@TextureOrTarget; raw@true" />
+									<uid entityId="3693685551" />
+								</ptr>
+							</component>
+							<transform>
+								<scale x="1.0" y="1.2" z="1.0" />
+							</transform>
+							<uid entityId="2376698779" />
+						</children>
+						<children name="Stage">
+							<behaviours type="anchoredElement">
+								<ptr autoAttachToParent="true">
+									<horizontalAnchor nrp_1="0.5" offset_1="-426.0" offset_2="840.0" />
+									<normalizedPivot x="0.5" y="0.5" />
+									<uid entityId="3362230045" />
+									<verticalAnchor nrp_1="0.5" offset_1="-42.0" offset_2="120.0" />
+								</ptr>
+							</behaviours>
+							<children name="Text">
+								<behaviours type="anchoredElement">
+									<ptr autoAttachToParent="true">
+										<horizontalAnchor nrp_2="1.0" />
+										<normalizedPivot x="0.5" y="0.5" />
+										<uid entityId="2037782356" />
+										<verticalAnchor nrp_2="1.0" />
+									</ptr>
+								</behaviours>
+								<component type="label">
+									<ptr curveSize="RectWidth" dontUseId="true" linesBreak="BreakAll" sfs="true" text="Stage" textOverflowPolicy="Break">
+										<curve trackId="curve" />
+										<fontStyle id="KIT_Font_GoldShdw@90pt" id..editor..ref="assetType@fontStyle" />
+										<uid entityId="4236290207" />
+									</ptr>
+								</component>
+								<transform />
+								<uid entityId="2618698357" />
+							</children>
+							<transform />
+							<uid entityId="199029547" />
+						</children>
+						<children name="TimerHolder">
+							<behaviours type="anchoredElement">
+								<ptr autoAttachToParent="true">
+									<horizontalAnchor nrp_1="0.5" />
+									<normalizedPivot x="0.5" y="0.5" />
+									<uid entityId="1609913447" />
+									<verticalAnchor nrp_1="0.5" offset_1="-100.0" />
+								</ptr>
+							</behaviours>
+							<behaviours type="locator">
+								<ptr name="BR_Main_Timer">
+									<uid entityId="332299235" />
+								</ptr>
+							</behaviours>
+							<children name="Panel">
+								<link objId="891967954">
+									<id id="KIT_Tmr_Wnd@Default" id..editor..ref="assetType@sceneObject" />
+								</link>
+								<transform />
+								<uid entityId="2731192959" />
+							</children>
+							<transform />
+							<uid entityId="1194259420" />
+						</children>
+						<transform />
+						<uid entityId="687304408" />
+					</children>
+					<children active="false" name="ButtonClaimRewardHolder">
+						<behaviours type="anchoredElement">
+							<ptr autoAttachToParent="true">
+								<horizontalAnchor nrp_1="0.5" offset_1="-110.0" />
+								<normalizedPivot x="0.5" y="0.5" />
+								<uid entityId="418632902" />
+								<verticalAnchor nrp_1="0.5" offset_1="-450.0" />
+							</ptr>
+						</behaviours>
+						<children name="Button">
+							<link objId="1202382135">
+								<id id="KIT_Button_Rect@L_Green" id..editor..ref="assetType@sceneObject" />
+							</link>
+							<transform />
+							<uid entityId="1077572406" />
+						</children>
+						<transform />
+						<uid entityId="2917937274" />
+					</children>
+					<children name="SettersAndSignals">
+						<behaviours type="propertySetter">
+							<ptr applyFlags="OnEnabled" ignoreErrorResult="true" name="Установка этапа">
+								<contextSource type="behaviourVarsContextProvider">
+									<ptr>
+										<source path="3799744113" />
+									</ptr>
+								</contextSource>
+								<nodes type="propertyBindingString">
+									<ptr>
+										<nodeSource type="simplePropertyNodeSource">
+											<ptr binding="@label:anim_text">
+												<node path="2618698357" />
+											</ptr>
+										</nodeSource>
+										<value type="stringConcatValue">
+											<ptr>
+												<values type="customStringValue">
+													<ptr value="Stage " />
+												</values>
+												<values type="numberToStringValue">
+													<ptr>
+														<value type="contextNumberValue">
+															<ptr name="CurrentStage" />
+														</value>
+													</ptr>
+												</values>
+											</ptr>
+										</value>
+									</ptr>
+								</nodes>
+								<uid entityId="3193834027" />
+							</ptr>
+						</behaviours>
+						<behaviours type="propertySetter">
+							<ptr applyFlags="OnEnabled" name="Активация таймера">
+								<contextSource type="behaviourVarsContextProvider">
+									<ptr>
+										<source path="3799744113" />
+									</ptr>
+								</contextSource>
+								<nodes type="propertyBindingBool">
+									<ptr>
+										<nodeSource type="simplePropertyNodeSource">
+											<ptr binding="@hSTimer:isEnabled">
+												<node path="891967954/2731192959" />
+											</ptr>
+										</nodeSource>
+										<value type="stringCompareConditionBlock">
+											<ptr>
+												<left type="contextStringValue">
+													<ptr name="CurrentPhase" />
+												</left>
+												<right type="customStringValue">
+													<ptr value="Active" />
+												</right>
+											</ptr>
+										</value>
+									</ptr>
+								</nodes>
+								<uid entityId="1937559488" />
+							</ptr>
+						</behaviours>
+						<behaviours type="iCSController">
+							<!--iCSController: vso: 1-->
+							<ptr autoPlay="true">
+								<contextSource type="behaviourVarsContextProvider">
+									<ptr>
+										<source path="3799744113" />
+									</ptr>
+								</contextSource>
+								<ics>
+									<embeddedAsset assetType="interactiveCutScene">
+										<!--fixes: 9-->
+										<!--gff: 2-->
+										<!--gffCore: 1-->
+										<!--rev: 23-->
+										<!--vars_context_provider: 1-->
+										<!--vso: 42-->
+										<actors type="locatorActor">
+											<ptr identifier="0" locatorName="BR_Main_Timer" />
+										</actors>
+										<annotations..editor _editorOnly_="true" type="graphComment">
+											<ptr _editorOnly_="true" color..editor="#252C3C7F">
+												<position..editor x="-176.0" y="-66.0" />
+												<size..editor x="1298.0" y="176.0" />
+											</ptr>
+										</annotations..editor>
+										<links type="actionLink">
+											<ptr destination="int64PropertySet" destinationPin="source" source="int64VariableGet" />
+										</links>
+										<links type="actionLink">
+											<ptr destination="int64PropertySet" source="startData" />
+										</links>
+										<links type="actionLink">
+											<ptr destination="invokeData" source="int64PropertySet" />
+										</links>
+										<links type="actionLink">
+											<ptr destination="boolChoiceData" source="invokeData" />
+										</links>
+										<links type="actionLink">
+											<ptr destination="exitData" source="invokeData_8847d456" />
+										</links>
+										<links type="actionLink">
+											<ptr destination="invokeData_8847d456" source="boolChoiceData" sourcePin="true" />
+										</links>
+										<links type="actionLink">
+											<ptr destination="boolChoiceData" destinationPin="choice" source="stringCompareData" />
+										</links>
+										<links type="actionLink">
+											<ptr destination="stringCompareData" destinationPin="left" source="stringVariableGet" />
+										</links>
+										<links type="actionLink">
+											<ptr destination="invokeData_2b65f35d" source="boolChoiceData" sourcePin="false" />
+										</links>
+										<links type="actionLink">
+											<ptr destination="exitData" source="invokeData_2b65f35d" />
+										</links>
+										<nodes type="startData">
+											<ptr id="startData" width..editor="154.0">
+												<graphPosition..editor x="-154.0" y="0.0" />
+											</ptr>
+										</nodes>
+										<nodes type="int64VariableGet">
+											<ptr id="int64VariableGet" width..editor="198.0">
+												<graphPosition..editor x="22.0" y="44.0" />
+												<value variableName="RemainingTime" />
+											</ptr>
+										</nodes>
+										<nodes type="int64PropertySet">
+											<ptr id="int64PropertySet" width..editor="198.0">
+												<graphPosition..editor x="22.0" y="0.0" />
+												<source />
+												<value actor="0" binding="Panel@hSTimer:remainingSeconds" />
+											</ptr>
+										</nodes>
+										<nodes type="exitData">
+											<ptr id="exitData">
+												<graphPosition..editor x="946.0" y="22.0" />
+											</ptr>
+										</nodes>
+										<nodes type="invokeData">
+											<ptr actor="0" binding="Panel@hSTimer:Start" id="invokeData" width..editor="198.0">
+												<graphPosition..editor x="242.0" y="0.0" />
+											</ptr>
+										</nodes>
+										<nodes type="boolChoiceData">
+											<ptr id="boolChoiceData">
+												<choice />
+												<graphPosition..editor x="462.0" y="0.0" />
+											</ptr>
+										</nodes>
+										<nodes type="invokeData">
+											<ptr actor="0" binding="Panel/Content/TimerPos/Timer/Scaler/Arrows@animation:Play" id="invokeData_8847d456">
+												<graphPosition..editor x="726.0" y="44.0" />
+											</ptr>
+										</nodes>
+										<nodes type="stringCompareData">
+											<ptr id="stringCompareData">
+												<graphPosition..editor x="308.0" y="176.0" />
+												<left />
+												<right value="Active" />
+											</ptr>
+										</nodes>
+										<nodes type="stringVariableGet">
+											<ptr id="stringVariableGet">
+												<graphPosition..editor x="88.0" y="198.0" />
+												<value variableName="CurrentPhase" />
+											</ptr>
+										</nodes>
+										<nodes type="invokeData">
+											<ptr actor="0" binding="Panel/Content/TimerPos/Timer/Scaler/Arrows@animation:Pause" id="invokeData_2b65f35d">
+												<graphPosition..editor x="726.0" y="-44.0" />
+											</ptr>
+										</nodes>
+										<variablesContext type="varsContext">
+											<ptr />
+										</variablesContext>
+									</embeddedAsset>
+								</ics>
+								<uid entityId="2538459053" />
+							</ptr>
+						</behaviours>
+						<behaviours type="propertySetter">
+							<ptr applyFlags="OnEnabled" name="Активация кнопки сбора награды">
+								<contextSource type="behaviourVarsContextProvider">
+									<ptr>
+										<source path="3799744113" />
+									</ptr>
+								</contextSource>
+								<nodes type="propertyBindingBool">
+									<ptr>
+										<nodeSource type="simplePropertyNodeSource">
+											<ptr binding=":active">
+												<node path="2917937274" />
+											</ptr>
+										</nodeSource>
+										<value type="stringCompareConditionBlock">
+											<ptr>
+												<left type="contextStringValue">
+													<ptr name="CurrentPhase" />
+												</left>
+												<right type="customStringValue">
+													<ptr value="Win" />
+												</right>
+											</ptr>
+										</value>
+									</ptr>
+								</nodes>
+								<uid entityId="543730287" />
+							</ptr>
+						</behaviours>
+						<behaviours type="propertySetter">
+							<ptr name="Деактивация кнопки награды">
+								<contextSource type="behaviourVarsContextProvider">
+									<ptr>
+										<source path="3799744113" />
+									</ptr>
+								</contextSource>
+								<nodes type="propertyBindingBool">
+									<ptr>
+										<nodeSource type="simplePropertyNodeSource">
+											<ptr binding=":active">
+												<node path="2917937274" />
+											</ptr>
+										</nodeSource>
+										<value type="customBoolValue">
+											<ptr />
+										</value>
+									</ptr>
+								</nodes>
+								<uid entityId="904052195" />
+							</ptr>
+						</behaviours>
+						<behaviours type="propertySetter">
+							<ptr applyFlags="OnEnabled" name="Выставляем надпись на таймере">
+								<condition type="stringCompareConditionBlock">
+									<ptr operationType="NotEquals" simple="true">
+										<left type="contextStringValue">
+											<ptr name="CurrentPhase" />
+										</left>
+										<right type="customStringValue">
+											<ptr value="Active" />
+										</right>
+									</ptr>
+								</condition>
+								<contextSource type="behaviourVarsContextProvider">
+									<ptr>
+										<source path="3799744113" />
+									</ptr>
+								</contextSource>
+								<nodes type="propertyBindingString">
+									<ptr>
+										<nodeSource type="simplePropertyNodeSource">
+											<ptr binding="@label:anim_text">
+												<node path="891967954/2703899156" />
+											</ptr>
+										</nodeSource>
+										<value type="customStringValue">
+											<ptr value="Finish" />
+										</value>
+									</ptr>
+								</nodes>
+								<uid entityId="3379466461" />
+							</ptr>
+						</behaviours>
+						<transform />
+						<uid entityId="2542830625" />
+					</children>
+					<transform>
+						<scale x="0.92" y="0.92" z="1.0" />
+					</transform>
+					<uid entityId="2356181980" />
+				</children>
+				<children colorTag..editor="4" comment..editor="НЕ ДЛЯ АНИМАЦИЙ&#10;Для анимации движения блока используйте вложенную ноду QuestsBlock" name="RightContainer">
+					<behaviours type="anchoredElement">
+						<ptr>
+							<anchorTarget path="4266625334" />
+							<horizontalAnchor nrp_1="0.5" offset_1="425.0" />
+							<normalizedPivot x="0.5" y="0.5" />
+							<uid entityId="3633134360" />
+							<verticalAnchor nrp_1="0.5" />
+						</ptr>
+					</behaviours>
+					<behaviours type="color">
+						<ptr>
+							<uid entityId="1613407018" />
+						</ptr>
+					</behaviours>
+					<behaviours type="animation">
+						<ptr>
+							<remoteNodeLocator />
+							<uid entityId="1797925291" />
+						</ptr>
+					</behaviours>
+					<children name="Holder">
+						<behaviours type="anchoredElement">
+							<ptr autoAttachToParent="true">
+								<horizontalAnchor nrp_1="0.5" offset_1="-815.0" offset_2="1630.0" />
+								<normalizedPivot x="0.5" y="0.5" />
+								<uid entityId="4256592069" />
+								<verticalAnchor nrp_1="0.5" offset_1="-550.0" offset_2="1100.0" />
+							</ptr>
+						</behaviours>
+						<children comment..editor="Форма для вставки объекта &#10;в зависимости от девайса.&#10;&#10;По умолчанию - выключено.&#10;&#10;Настраивается из ноды:&#10;Properties главного окна." name="Header">
+							<behaviours type="anchoredElement">
+								<ptr autoAttachToParent="true">
+									<horizontalAnchor nrp_1="0.5" offset_1="-427.0" offset_2="837.0" />
+									<normalizedPivot x="0.5" y="0.5" />
+									<uid entityId="2110924198" />
+									<verticalAnchor nrp_1="1.0" offset_1="-139.0" offset_2="173.0" />
+								</ptr>
+							</behaviours>
+							<behaviours type="animation">
+								<ptr>
+									<remoteNodeLocator />
+									<uid entityId="705630829" />
+								</ptr>
+							</behaviours>
+							<behaviours type="color">
+								<ptr>
+									<uid entityId="1682858968" />
+								</ptr>
+							</behaviours>
+							<children name="Header">
+								<behaviours type="anchoredElement">
+									<ptr autoAttachToParent="true" isAutoUpdatable="true">
+										<horizontalAnchor nrp_1="0.5" offset_1="-425.0" offset_2="850.0" />
+										<normalizedPivot x="0.5" y="0.5" />
+										<uid entityId="1426087962" />
+										<verticalAnchor nrp_1="0.5" />
+									</ptr>
+								</behaviours>
+								<behaviours type="layout">
+									<ptr>
+										<uid entityId="263613187" />
+									</ptr>
+								</behaviours>
+								<children name="BG">
+									<behaviours type="anchoredElement">
+										<ptr autoAttachToParent="true">
+											<horizontalAnchor nrp_2="1.0" offset_1="-3.05176e-05" offset_2="-8.99997" />
+											<normalizedPivot x="0.5" y="0.5" />
+											<uid entityId="3080093980" />
+											<verticalAnchor nrp_1="0.5" offset_1="-74.0" offset_2="148.0" />
+										</ptr>
+									</behaviours>
+									<component type="imageMirrored">
+										<ptr fitPolicy="Stretch" fixPrescale="true" xSliceLeft="0.5" xSliceRight="0.5">
+											<texture id="GoalPanelBlue" id..editor..ref="assetType@TextureOrTarget; raw@true" />
+											<uid entityId="2640207903" />
+										</ptr>
+									</component>
+									<transform />
+									<uid entityId="236314941" />
+								</children>
+								<children name="Title">
+									<behaviours type="anchoredElement">
+										<ptr autoAttachToParent="true">
+											<horizontalAnchor nrp_1="0.5" offset_1="-426.0" offset_2="840.0" />
+											<normalizedPivot x="0.5" y="0.5" />
+											<uid entityId="4234819917" />
+											<verticalAnchor nrp_1="0.5" offset_1="-42.0" offset_2="120.0" />
+										</ptr>
+									</behaviours>
+									<children name="Text">
+										<behaviours type="anchoredElement">
+											<ptr autoAttachToParent="true">
+												<horizontalAnchor nrp_2="1.0" />
+												<normalizedPivot x="0.5" y="0.5" />
+												<uid entityId="2758167228" />
+												<verticalAnchor nrp_2="1.0" />
+											</ptr>
+										</behaviours>
+										<component type="label">
+											<ptr curveSize="RectWidth" dontUseId="true" linesBreak="BreakAll" sfs="true" text="BeatRush" textOverflowPolicy="Break">
+												<curve trackId="curve" />
+												<fontStyle id="KIT_Font_GoldShdw@90pt" id..editor..ref="assetType@fontStyle" />
+												<uid entityId="934913872" />
+											</ptr>
+										</component>
+										<transform />
+										<uid entityId="4249706054" />
+									</children>
+									<transform />
+									<uid entityId="805479223" />
+								</children>
+								<sorting type="priority">
+									<ptr relativePriority="1">
+										<uid entityId="2192265699" />
+									</ptr>
+								</sorting>
+								<transform />
+								<uid entityId="741110434" />
+							</children>
+							<transform />
+							<uid entityId="2582948514" />
+						</children>
+						<children name="Frame">
+							<behaviours type="anchoredElement">
+								<ptr autoAttachToParent="true">
+									<horizontalAnchor nrp_1="0.5" offset_1="-829.5" offset_2="1659.0" />
+									<normalizedPivot x="0.5" y="0.5" />
+									<uid entityId="2730946761" />
+									<verticalAnchor nrp_1="0.5" offset_1="-608.5" offset_2="1217.0" />
+								</ptr>
+							</behaviours>
+							<component type="imageMirrored">
+								<ptr fitPolicy="Stretch" fixPrescale="true" ignoreRaycastCheck="true" xSliceLeft="0.49" xSliceRight="0.51" ySliceLeft="0.44" ySliceRight="0.76">
+									<texture id="PanelBlue" id..editor..ref="assetType@TextureOrTarget; raw@true" />
+									<uid entityId="2123851015" />
+								</ptr>
+							</component>
+							<transform />
+							<uid entityId="3248631413" />
+						</children>
+						<children name="ScrollerContainerWorld">
+							<behaviours type="anchoredElement">
+								<ptr autoAttachToParent="true">
+									<horizontalAnchor nrp_2="1.0" offset_1="15.0" offset_2="-30.0" />
+									<normalizedPivot x="0.5" y="0.5" />
+									<uid entityId="4008160233" />
+									<verticalAnchor nrp_2="1.0" offset_1="-13.0" offset_2="-54.0" />
+								</ptr>
+							</behaviours>
+							<behaviours type="nodeSignalProvider">
+								<ptr>
+									<uid entityId="2924181999" />
+								</ptr>
+							</behaviours>
+							<behaviours type="recyclerView">
+								<ptr extendedAreaSize="0.0" startIndex="1">
+									<adapter type="leaderboardVarsContextArrayAdapter">
+										<ptr>
+											<dataProvider type="basicRecyclerViewDataProvider">
+												<ptr itemIdVariableName="SaveId" itemViewName="ViewItem">
+													<contextArrayValue type="contextVarsContextArrayValue">
+														<ptr name="Players" />
+													</contextArrayValue>
+													<contextSource type="gffGlobalContextProvider">
+														<ptr contextId="BeatRushUIContext" />
+													</contextSource>
+												</ptr>
+											</dataProvider>
+										</ptr>
+									</adapter>
+									<pool path="2073180119" />
+									<scroller path="3692321503" />
+									<uid entityId="1251628429" />
+									<views first="ViewItem">
+										<second id="UI_BeatRush_PlayerPanel" id..editor..ref="assetType@sceneObject" />
+									</views>
+								</ptr>
+							</behaviours>
+							<children name="scroller">
+								<behaviours type="anchoredElement">
+									<ptr autoAttachToParent="true">
+										<horizontalAnchor nrp_2="1.0" />
+										<normalizedPivot x="0.5" y="0.5" />
+										<uid entityId="2046511420" />
+										<verticalAnchor nrp_2="1.0" offset_1="-30.0" offset_2="-21.0" />
+									</ptr>
+								</behaviours>
+								<behaviours type="scroller">
+									<ptr containerCenterize="CenterTop" isEnabled="false" moveDirection="Vertical">
+										<settingsAsset>
+											<embeddedAsset assetType="scrollerSettingsAsset">
+												<!--vars_context_provider: 1-->
+												<settings accelerationConstantMotion="5.0" bounce_n="200.0" bounce_p="200.0" deceleration1="3500.0" deceleration2="40000.0" drag_threshold="0.0" easingInitialVelocityFactor="0.2" easingMinimalDuration="0.5" maxSpeedConstantMotion="400.0" max_velocity="6000.0" />
+											</embeddedAsset>
+										</settingsAsset>
+										<target path="2912671990" />
+										<uid entityId="3692321503" />
+									</ptr>
+								</behaviours>
+								<behaviours type="uIScissorRect">
+									<ptr scissorEnabled="true">
+										<uid entityId="2454891734" />
+									</ptr>
+								</behaviours>
+								<behaviours type="scrollContentDrawOptimizer">
+									<ptr recursivelyIntersect="false" storeHidden="false">
+										<anchor path="4008160233" />
+										<content path="2776135579" />
+										<scroll path="3692321503" />
+										<uid entityId="1518324483" />
+									</ptr>
+								</behaviours>
+								<behaviours type="rectViewOwner">
+									<ptr>
+										<uid entityId="3648242962" />
+									</ptr>
+								</behaviours>
+								<children active="false" name="pool" visible="false">
+									<behaviours type="recyclerViewPool">
+										<ptr>
+											<uid entityId="2073180119" />
+										</ptr>
+									</behaviours>
+									<children name="loading" visible="false">
+										<transform />
+										<uid entityId="1159123585" />
+									</children>
+									<transform />
+									<uid entityId="2336535221" />
+								</children>
+								<children name="autoLayout">
+									<behaviours type="axisAlignedLayoutGroup">
+										<ptr autoAttachToParent="true" boxCenterizePolicy="CenterTop" centerizePolicy="CenterTop" isAutoUpdatable="true" isReverse="true" isVertical="true" spaceBetweenElements="12.0" verticalPolicy="AutoRectMinSize">
+											<borderRect xEnd="8.0" xStart="8.0" yEnd="24.0" yStart="20.0" />
+											<horizontalAnchor nrp_2="1.0" />
+											<normalizedPivot x="0.5" y="0.5" />
+											<uid entityId="2912671990" />
+											<verticalAnchor nrp_2="1.0" offset_1="19877.0" offset_2="-19877.0" />
+										</ptr>
+									</behaviours>
+									<behaviours type="nodeInfo">
+										<ptr name="autoLayout">
+											<uid entityId="1919038263" />
+										</ptr>
+									</behaviours>
+									<transform />
+									<uid entityId="2776135579" />
+								</children>
+								<transform />
+								<uid entityId="2156844809" />
+							</children>
+							<transform />
+							<uid entityId="1102700678" />
+						</children>
+						<transform />
+						<uid entityId="204033693" />
+					</children>
+					<children name="LogicUP">
+						<behaviours type="userProfilesVarsContextArrayLoader">
+							<ptr arrayVariableName="Players" eventId="BeatRush" profileIdVariableName="SaveId">
+								<contextSource type="gffGlobalContextProvider">
+									<ptr contextId="BeatRushUIContext" />
+								</contextSource>
+								<countValue type="integerValueFromAnotherContext">
+									<ptr>
+										<anotherContext type="externalVarsContextSourceValue">
+											<ptr>
+												<source type="gffGlobalContextProvider">
+													<ptr contextId="BeatRushUIContext" />
+												</source>
+											</ptr>
+										</anotherContext>
+										<value type="contextIntegerValue">
+											<ptr name="PlayersCount" />
+										</value>
+									</ptr>
+								</countValue>
+								<profilesContextSource type="internalVarsContextProvider">
+									<ptr>
+										<source type="gffGlobalContextProvider">
+											<ptr contextId="UserProfileFeature" />
+										</source>
+										<value type="varsContextValueFromContext">
+											<ptr name="Profiles" />
+										</value>
+									</ptr>
+								</profilesContextSource>
+								<uid entityId="2360434902" />
+							</ptr>
+						</behaviours>
+						<transform />
+						<uid entityId="2978505323" />
+					</children>
+					<transform />
+					<uid entityId="791412919" />
+				</children>
+				<transform />
+				<uid entityId="3280936656" />
+			</children>
+			<transform />
+			<uid entityId="1085146017" />
+		</children>
+		<children name="HUD_Rect">
+			<behaviours type="hsFullScreenRect">
+				<ptr dontEnlargeOnAndroid="false" enlargeSafeArea="true" enlargementHorizontal="17.5" enlargementVertical="24.0" useSaveArea="true">
+					<uid entityId="2482511730" />
+				</ptr>
+			</behaviours>
+			<behaviours type="animation">
+				<ptr>
+					<remoteNodeLocator />
+					<uid entityId="1532436999" />
+				</ptr>
+			</behaviours>
+			<children comment..editor="Форма для вставки объекта &#10;в зависимости от девайса.&#10;&#10;По умолчанию - выключено.&#10;&#10;Настраивается из ноды:&#10;Properties главного окна." name="CloseButton">
+				<behaviours type="anchoredElement">
+					<ptr>
+						<anchorTarget path="2482511730" />
+						<horizontalAnchor nrp_1="0.5" offset_1="1010.0" offset_2="100.0" />
+						<normalizedPivot x="0.5" y="0.5" />
+						<uid entityId="193247879" />
+						<verticalAnchor nrp_1="1.0" offset_1="-131.451" offset_2="100.0" />
+					</ptr>
+				</behaviours>
+				<behaviours type="animation">
+					<ptr>
+						<remoteNodeLocator />
+						<uid entityId="1071795933" />
+					</ptr>
+				</behaviours>
+				<behaviours type="color">
+					<ptr>
+						<uid entityId="1257145255" />
+					</ptr>
+				</behaviours>
+				<behaviours type="HSSignalsSubscription">
+					<ptr>
+						<subscriptions type="hSSignalSubscription">
+							<ptr name..editor="Press">
+								<callbacks type="invokeCallback">
+									<ptr>
+										<method methodName="Activate">
+											<entity path="3509994215/704770427" />
+										</method>
+									</ptr>
+								</callbacks>
+								<subscriptions type="visualSignalSubscription">
+									<ptr signalName="click" signalType="Press">
+										<signalsProvider path="1795993957/811733988" />
+									</ptr>
+								</subscriptions>
+							</ptr>
+						</subscriptions>
+						<subscriptions type="hSSignalSubscription">
+							<ptr>
+								<callbacks type="invokeCallback">
+									<ptr>
+										<method methodName="Close">
+											<entity path="3951213326" />
+										</method>
+									</ptr>
+								</callbacks>
+								<subscriptions type="visualSignalSubscription">
+									<ptr signalName="click" signalType="Tap">
+										<signalsProvider path="1795993957/811733988" />
+									</ptr>
+								</subscriptions>
+							</ptr>
+						</subscriptions>
+						<uid entityId="28486905" />
+					</ptr>
+				</behaviours>
+				<children name="Button">
+					<link objId="1795993957">
+						<id id="KIT_Button_Circle@M_Red_Close" id..editor..ref="assetType@sceneObject" />
+					</link>
+					<transform />
+					<uid entityId="1936688563" />
+				</children>
+				<children active="false" name="Haptic_controller_singleshot_light">
+					<link objId="3509994215">
+						<id id="Haptic_Controller_singleshot_light" id..editor..ref="assetType@sceneObject" />
+					</link>
+					<transform />
+					<uid entityId="704770427" />
+				</children>
+				<sorting type="priority">
+					<ptr relativePriority="1">
+						<uid entityId="1248651450" />
+					</ptr>
+				</sorting>
+				<transform />
+				<uid entityId="1368999081" />
+			</children>
+			<sorting type="priority">
+				<ptr relativePriority="0">
+					<uid entityId="2788321780" />
+				</ptr>
+			</sorting>
+			<transform>
+				<position x="617.86" y="325.86" z="0.0" />
+			</transform>
+			<uid entityId="758967111" />
+		</children>
+		<children name="PropertySetter_StagesCount_2">
+			<behaviours type="propertySetter">
+				<ptr applyFlags="OnEnabled" name="BeatRush_EventVisualsVariants_StagesCount_2">
+					<condition type="conditionBoolValue">
+						<ptr>
+							<conditionAsset id="BeatRush_Condition_Balance_StagesCount2" id..editor..ref="assetType@conditionAsset" />
+						</ptr>
+					</condition>
+					<nodes type="propertyBindingColor">
+						<ptr>
+							<nodeSource type="simplePropertyNodeSource">
+								<ptr binding="@image:color">
+									<node path="2281526198" />
+								</ptr>
+							</nodeSource>
+							<value type="customColorValue">
+								<ptr value="#F5A2FFFF" />
+							</value>
+						</ptr>
+					</nodes>
+					<uid entityId="630261089" />
+				</ptr>
+			</behaviours>
+			<transform />
+			<uid entityId="2308379528" />
+		</children>
+		<sorting type="priority">
+			<ptr>
+				<uid entityId="2200288386" />
+			</ptr>
+		</sorting>
+		<transform />
+		<uid entityId="1778749390" />
+	</root>
+</asset>
